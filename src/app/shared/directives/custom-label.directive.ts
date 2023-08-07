@@ -39,31 +39,32 @@ export class CustomLabelDirective implements OnInit {
     if(!this.htmlElement) return;
     if(!this._errors){
       this.htmlElement.nativeElement.innerText = 'OK';
-      this._color = 'green';
-      this.setStyle();
+      this.setColor('green');
       return;
     }
 
     const errors = Object.keys(this._errors);
     if(errors.includes('required')){
       this.htmlElement.nativeElement.innerText = 'This field is required';
-      this._color = 'red';
-      this.setStyle();
+      this.setColor('red');
       return;
     }
 
     if(errors.includes('minlength')){
       this.htmlElement.nativeElement.innerText = 'At least 6 characters';
-      this._color = 'red';
-      this.setStyle();
+      this.setColor('red');
       return;
     }
 
     if(errors.includes('email')){
       this.htmlElement.nativeElement.innerText = 'email@example format required';
-      this._color = 'red';
-      this.setStyle();
+      this.setColor('red');
       return;
     }
+  }
+
+  setColor(color: string): void{
+    this._color = color;
+    this.setStyle();
   }
 }
